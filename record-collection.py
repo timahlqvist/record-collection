@@ -1,3 +1,6 @@
+# Record Collection Application
+# Tim Ahlqvist - 2020
+
 import os
 
 collections = []
