@@ -72,13 +72,13 @@ def start():
     print("1) Create new collection")
     print("2) Load collection")
     print("3) Quit application")
-    startInput = input(": ")
+    startInput = int(input(": "))
 
-    if startInput == "1":
+    if startInput == 1:
         createCollection()
-    elif startInput == "2":
+    elif startInput == 2:
         loadCollection()
-    elif startInput == "3":
+    elif startInput == 3:
         quit()
 
 start()
