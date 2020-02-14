@@ -68,13 +68,20 @@ def loadCollection():
     os.system("PAUSE")
     start()
 
+def information():
+    os.system("CLS")
+    print("This is an application / a computer program were you can store your record collection. You can search for artists and records in your collection and look at the songlist, length of the record and more. This project is made in Python and I do this to practice Python.")
+    os.system("PAUSE")
+    start()
+
 def start():
     os.system("CLS")
     print("Record Collection Application")
     print("Organize your record collection")
     print("1) Create new collection")
     print("2) Load collection")
-    print("3) Quit application")
+    print("3) Information")
+    print("4) Quit application")
     startInput = int(input(": "))
 
     if startInput == 1:
@@ -82,6 +89,8 @@ def start():
     elif startInput == 2:
         loadCollection()
     elif startInput == 3:
+        information()
+    elif startInput == 4:
         quit()
 
 start()
