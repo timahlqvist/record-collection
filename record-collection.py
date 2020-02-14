@@ -50,21 +50,34 @@ def createRelease():
     kent = CreateRelease("kent", "kent", 1995, "RCA, BMG", "CD")
     maggio = CreateRelease("Veronica Maggio", "Fiender är tråkigt", 2019, "Universal Music", "Vinyl")
 
+def loadCollection():
+    os.system("CLS")
+    x = 0
+
+    print("Choose which collection you want to edit")
+    for i in collections:
+        print(x + 1, collections[x])
+        x += 1
+    choosenCollection = int(input(": ")) - 1
+
+    os.system("CLS")
+    print("You are in", collections[choosenCollection])
+    os.system("PAUSE")
+    start()
+
 def start():
     os.system("CLS")
     print("Record Collection Application")
     print("Organize your record collection")
     print("1) Create new collection")
-    print("2) Nothing right now")
+    print("2) Load collection")
     print("3) Quit application")
     startInput = input(": ")
 
     if startInput == "1":
         createCollection()
     elif startInput == "2":
-        print("I said nothing")
-        os.system("PAUSE")
-        start()
+        loadCollection()
     elif startInput == "3":
         quit()
 
