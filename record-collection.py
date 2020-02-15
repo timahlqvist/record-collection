@@ -53,6 +53,12 @@ def createRelease():
     kent = CreateRelease("kent", "kent", 1995, "RCA, BMG", "CD")
     maggio = CreateRelease("Veronica Maggio", "Fiender är tråkigt", 2019, "Universal Music", "Vinyl")
 
+def collection(choosenCollection):
+    os.system("CLS")
+    print("You are in", collections[choosenCollection])
+    os.system("PAUSE")
+    start()
+
 def loadCollection():
     os.system("CLS")
     x = 0
@@ -62,11 +68,7 @@ def loadCollection():
         print(x + 1, collections[x])
         x += 1
     choosenCollection = int(input(": ")) - 1
-
-    os.system("CLS")
-    print("You are in", collections[choosenCollection])
-    os.system("PAUSE")
-    start()
+    collection(choosenCollection)
 
 def information():
     os.system("CLS")
