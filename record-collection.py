@@ -5,6 +5,7 @@ import os
 
 collections = []
 releases = []
+songNames = []
 
 class CreateCollection():
     def __init__(self, name, description):
@@ -15,14 +16,15 @@ class CreateCollection():
         collections.append(collection)
 
 class CreateRelease():
-    def __init__(self, artist, title, year, label, type):
+    def __init__(self, artist, title, year, label, type, songNames):
         self.artist = artist
         self.title = title
         self.year = year
         self.label = label
         self.type = type
+        self.songNames = songNames
 
-        release = artist, title, year, label, type
+        release = artist, title, year, label, type, songNames
         releases.append(release)
 
 def listCollections():
@@ -50,14 +52,36 @@ def createCollection():
     listCollections()
 
 def createRelease():
-    kent = CreateRelease("kent", "kent", 1995, "RCA, BMG", "CD")
-    maggio = CreateRelease("Veronica Maggio", "Fiender är tråkigt", 2019, "Universal Music", "Vinyl")
+    os.system("CLS")
+    print("Artist:")
+    artist = input(": ")
+    print("Title:")
+    title = input(": ")
+    print("Year:")
+    year = int(input(": "))
+    print("Label (optional)")
+    label = input(": ")
+    print("Type, (CD, Vinyl, CD-Single, Vinyl-Single)")
+    type = input(": ")
+    print("How many songs is it on this release?")
+    songsInput = int(input(": "))
+    os.system("CLS")
+
+    for i in range(songsInput):
+        print("Name of song", i + 1, ": ")
+        songName = input(": ")
+        songNames.append(songName)
+
+    release1 = CreateRelease(artist, title, year, label, type, songNames)
+    listReleases()
 
 def collection(choosenCollection):
     os.system("CLS")
     print("You are in", collections[choosenCollection])
-    os.system("PAUSE")
-    start()
+    print("1) Back to start")
+    collectionInput = int(input(": "))
+    if collectionInput == 1:
+        start()
 
 def loadCollection():
     os.system("CLS")
@@ -81,18 +105,21 @@ def start():
     print("Record Collection Application")
     print("Organize your record collection")
     print("1) Create new collection")
-    print("2) Load collection")
-    print("3) Information")
-    print("4) Quit application")
+    print("2) Create new release")
+    print("3) Load collection")
+    print("4) Information")
+    print("5) Quit application")
     startInput = int(input(": "))
 
     if startInput == 1:
         createCollection()
     elif startInput == 2:
-        loadCollection()
+        createRelease()
     elif startInput == 3:
-        information()
+        loadCollection()
     elif startInput == 4:
+        information()
+    elif startInput == 5:
         quit()
 
 start()
