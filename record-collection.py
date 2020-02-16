@@ -6,6 +6,8 @@ import os
 collections = []
 releases = []
 songNames = []
+songLength = []
+recordLength = 0
 
 class CreateCollection():
     def __init__(self, name, description):
@@ -16,15 +18,17 @@ class CreateCollection():
         collections.append(collection)
 
 class CreateRelease():
-    def __init__(self, artist, title, year, label, type, songNames):
+    def __init__(self, artist, title, year, label, type, songNames, songLength, recordLength):
         self.artist = artist
         self.title = title
         self.year = year
         self.label = label
         self.type = type
         self.songNames = songNames
+        self.songLength = songLength
+        self.recordLength = recordLength
 
-        release = artist, title, year, label, type, songNames
+        release = artist, title, year, label, type, songNames, songLength, recordLength
         releases.append(release)
 
 def listCollections():
@@ -72,7 +76,19 @@ def createRelease():
         songName = input(": ")
         songNames.append(songName)
 
-    release1 = CreateRelease(artist, title, year, label, type, songNames)
+    os.system("CLS")
+    x = 0
+    for i in range(songsInput):
+        print("(optional) Length of", songNames[x], ": ")
+        length = int(input(": "))
+        songLength.append(length)
+        x += 1
+
+    y = 0
+    for i in range(songsInput):
+        recordLength = songLength[y] + songLength[y + 1]
+
+    release1 = CreateRelease(artist, title, year, label, type, songNames, songLength, recordLength)
     listReleases()
 
 def collection(choosenCollection):
