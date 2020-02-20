@@ -6,8 +6,7 @@ import os
 collections = []
 releases = []
 songNames = []
-songLength = []
-recordLength = 0
+songLengthList = []
 
 class CreateCollection():
     def __init__(self, name, description):
@@ -18,17 +17,16 @@ class CreateCollection():
         collections.append(collection)
 
 class CreateRelease():
-    def __init__(self, artist, title, year, label, type, songNames, songLength, recordLength):
+    def __init__(self, artist, title, year, label, type, songNames, recordLength):
         self.artist = artist
         self.title = title
         self.year = year
         self.label = label
         self.type = type
         self.songNames = songNames
-        self.songLength = songLength
         self.recordLength = recordLength
 
-        release = artist, title, year, label, type, songNames, songLength, recordLength
+        release = artist, title, year, label, type, songNames, songLengthList, recordLength
         releases.append(release)
 
 def listCollections():
@@ -56,6 +54,9 @@ def createCollection():
     listCollections()
 
 def createRelease():
+    minutes = 0
+    seconds = 0
+
     os.system("CLS")
     print("Artist:")
     artist = input(": ")
@@ -79,16 +80,23 @@ def createRelease():
     os.system("CLS")
     x = 0
     for i in range(songsInput):
-        print("(optional) Length of", songNames[x], ": ")
-        length = int(input(": "))
-        songLength.append(length)
+        print("(optional) Length of", songNames[x])
+        print("Minutes: ")
+        songMinutes = int(input(": "))
+        print("Seconds: ")
+        songSeconds = int(input(": "))
+
+        songLength = songMinutes, ":", songSeconds
+        songLengthList.append(songLength)
+
+        minutes += songMinutes
+        seconds += songSeconds
+
         x += 1
 
-    y = 0
-    for i in range(songsInput):
-        recordLength = songLength[y] + songLength[y + 1]
+    recordLength = minutes, ":", seconds
 
-    release1 = CreateRelease(artist, title, year, label, type, songNames, songLength, recordLength)
+    CreateRelease(artist, title, year, label, type, songNames, recordLength)
     listReleases()
 
 def collection(choosenCollection):
