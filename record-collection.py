@@ -131,8 +131,9 @@ def start():
     print("1) Create new collection")
     print("2) Create new release")
     print("3) Load collection")
-    print("4) Information")
-    print("5) Quit application")
+    print("4. List all releases")
+    print("5) Information")
+    print("6) Quit application")
     startInput = int(input(": "))
 
     if startInput == 1:
@@ -142,8 +143,10 @@ def start():
     elif startInput == 3:
         loadCollection()
     elif startInput == 4:
-        information()
+        listReleases()
     elif startInput == 5:
+        information()
+    elif startInput == 6:
         quit()
 
 start()
